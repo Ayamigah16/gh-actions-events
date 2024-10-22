@@ -63,6 +63,8 @@ jobs:
     uses: "./.github/workflows/reusable.yml"
     with:
       artifact-name: dist
+    # secrets:
+    #   some scretes: ${{value}}
 
   report: 
     needs: [test,deploy]
