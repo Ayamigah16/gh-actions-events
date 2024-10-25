@@ -1,4 +1,4 @@
-name: Deploy website
+name: Usable Deploy website
 on:
   push:
     branches:
