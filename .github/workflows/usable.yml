@@ -54,15 +54,13 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: dist-files
-          path: |
-            dist
-            package.json
+          path: dist
 
   deploy:
     needs: build
     uses: "./.github/workflows/reusable.yml"
     with:
-      artifact-name: dist
+      artifact-name: dist-files
     # secrets:
     #   some scretes: ${{value}}
 
