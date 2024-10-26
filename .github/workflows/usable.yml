@@ -64,6 +64,13 @@ jobs:
     # secrets:
     #   some scretes: ${{value}}
 
+  print-deploy-result:
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Priint Deploy Output
+        run: echo "${{needs.deploy.outputs.result}}"
+
   report: 
     needs: [test,deploy]
     if: failure()

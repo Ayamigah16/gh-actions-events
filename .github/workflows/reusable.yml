@@ -8,8 +8,17 @@ on:
         default: dist-files
         type: string
     # secrtes:
+      # some-secrets:
+        # required: false
+    outputs:
+      result:
+        description: The result of the deployment operation
+        value: ${{jobs.deploy.outputs.outcome}}
+
 jobs:
   deploy:
+    outputs:
+      outcome: ${{steps.set-result.outputs.step-result}}
     runs-on: ubuntu-latest
     steps:
       - name: Get Code
@@ -21,3 +30,7 @@ jobs:
 
       - name: Output Information
         run: echo "Deploying & Uploading"
+
+      - name: Set Result Output
+        id: set-result
+        run: echo "::set-output name=step-result::success"
